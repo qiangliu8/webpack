@@ -7,18 +7,20 @@ module.exports = {
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dev'),
-    publicPath:'/dev/',
+    // publicPath:'/dev/',
     filename: 'js/vendor.js'
   },
+  devtool: 'inline-source-map',
   module: {
     rules: [
       {
         test: /\.js$/,
-        exclude: /(node_modules)/,
+        exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['env', 'babel-preset-react']
+            presets: ['env', 'babel-preset-react'],
+            plugins: ["transform-decorators-legacy"]
           }
         }
       },
@@ -69,7 +71,15 @@ module.exports = {
     }),
     //处理css部分
     new ExtractTextPlugin("scss/[name].css"),
-    //提出公共css部分
+    //提出公共部分
+    // new webpack.optimize.SplitChunksPlugin({
+    //   chunks: "all",
+    //   minSize: 20000,
+    //   minChunks: 1,
+    //   maxAsyncRequests: 5,
+    //   maxInitialRequests: 3,
+    //   name: true
+    // }),
     new webpack.optimize.SplitChunksPlugin({
       cacheGroups: {
           default: {
@@ -95,9 +105,20 @@ module.exports = {
     }),
     new webpack.optimize.RuntimeChunkPlugin({
       name: "manifest"
-    }),
+    })
   ],
   devServer: {
-    port:1003
+     contentBase: "./dev",
+    // contentBase:"./dev",
+    port: 1003,
+    proxy: {
+      '/': {
+        target: "http://localhost:1004",
+        changeOrigin:true,
+      }
   }
+  },
+  performance: {
+    hints:false
+  },
 }

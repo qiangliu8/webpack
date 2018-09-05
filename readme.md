@@ -5,3 +5,9 @@ npm install babel-preset-react --save-dev
 npm install --save-dev css-loader
 npm install --save-dev style-loader
 cnpm install extract-text-webpack-plugin@4.0.0-beta.0 --save-dev 生成css包，让CSS包是与JS包并行加载的。
+
+
+
+reduex默认只处理同步 ,react-thunk 异步任务需要react-thunk中间件
+
+cnpm install babel-plugin-transform-decorators-legacy --save-dev   优化connect 代码

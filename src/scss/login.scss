@@ -1,0 +1,41 @@
+$color:#278B81;
+.container{
+  background: -webkit-linear-gradient($color,#009860);
+  background: -o-linear-gradient($color,#009860);
+  background: -moz-linear-gradient($color,#009860);
+  background: linear-gradient($color,#009860);
+  text-align: center;
+  min-height: 100vh;
+  img{
+    margin: 26vh auto 24vh auto;
+    width: 100%;
+  }
+  .am-navbar{
+    background-color: transparent;
+    .am-navbar-left{
+      color:#7ABEBF;
+    }
+    .am-navbar-right{
+      color:#EAFEFF;
+    }
+  }
+  .am-button{
+    position: relative;
+    width: 45vh;
+    border-radius: 20px;
+    margin: 0 auto;
+  }
+  .loginBtn{
+    color: $color;
+  }
+  .registerBtn{
+    background: transparent;
+    border: 1px solid white !important;
+    color: white;
+  }
+  u{
+    color: white;
+    font-size: 20px;
+
+  }
+}
