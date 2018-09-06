@@ -1,38 +1,64 @@
 import React from 'react'
-import { NavBar, Icon ,List, InputItem,WhiteSpace,WingBlank,Button} from 'antd-mobile'
+import { NavBar, Icon ,List, InputItem,WhiteSpace,WingBlank,Radio,Button} from 'antd-mobile'
 // import { createForm } from 'rc-form';
-import { axios } from 'axios'
+import  axios  from 'axios'
 
 import '../../scss/register.scss'
 
 class Register extends React.Component{
   constructor(props) {
     super(props)
+    this.state = {
+      user:'',
+      pwd:'',
+      repeatpwd:'',
+      type:'bachelor'
+    }
   }
-  // componentDidMount() {
-  //   this.autoFocusInst.focus();
-  // }
-  handleClick(){
-    this.props.history.push('/')
+  componentDidMount () {
+    axios.get('/user/info').then(res => {
+      if (res.status === 200) {
+        if (res.data.code === 0) {
+          console.log(res)
+        } else {
+          this.props.history.push('/communitylogin')
+        }
+      }
+    })
+  }
+  handleClick () {
+    this.props.history.goBack()
+  }
+  hanleChange(key,val){
+    this.setState({[key]:val})
   }
   render () {
-    // const { getFieldProps } = this.props.form;
+    const RadioItem = Radio.RadioItem
+
     return (
       <div className="containerregister">
-         <NavBar
+        <NavBar
           mode="dark"
           leftContent={<Icon type="left" size="lg" style={{ marginTop: "20px" }} onClick={()=>this.handleClick()}/>}
         ></NavBar>
         <p className="ptitle">输入用户名和密码</p>
-        <WingBlank /><InputItem
+        <InputItem
+            onChange={e=>this.hanleChange('user',e)}
             placeholder="用户名"
-        /><WingBlank />
-         <WhiteSpace />   <WhiteSpace />   <WhiteSpace />
-         <WingBlank /><InputItem
-            placeholder="密码"
+        />
+        <InputItem
+            onChange={e=>this.hanleChange('pwd',e)}
+            placeholder="密码" type="password"
           >
-        </InputItem><WingBlank />
+        </InputItem>
+        <InputItem
+            onChange={e=>this.hanleChange('repeatpwd',e)}
+            placeholder="确认密码" type="password"
+          >
+        </InputItem>
         <Button className="loginBtn" >登陆</Button>
+        <RadioItem checked={this.state.type === 'bachelor'}>单身汉</RadioItem>
+        <RadioItem checked={this.state.type ==='matcher'}>媒婆</RadioItem>
       </div>
     )
   }

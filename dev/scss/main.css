@@ -7654,9 +7654,7 @@ a {
 .am-wingblank.am-wingblank-lg {
   margin-left: 15px;
   margin-right: 15px;
-}body {
-  font-family: 'Microsoft YaHei'; }
-.container {
+}.container {
   background: -webkit-linear-gradient(#278B81, #009860);
   background: -o-linear-gradient(#278B81, #009860);
   background: -moz-linear-gradient(#278B81, #009860);
@@ -7714,9 +7712,14 @@ a {
     bottom: 10vh;
     left: 5vh; }
   .containerregister .am-list-item {
-    background: transparent; }
-  .containerregister .am-list-line {
-    border-bottom: 1PX solid #ddd; }
+    background: transparent;
+    padding-right: 15px; }
+    .containerregister .am-list-item .am-list-line {
+      border-bottom: 1PX solid #ddd; }
+      .containerregister .am-list-item .am-list-line .am-list-content {
+        color: #EAFEFF; }
+      .containerregister .am-list-item .am-list-line input {
+        color: white; }
   .containerregister .loginBtn {
     background: transparent;
     position: absolute !important;
@@ -7725,5 +7728,5 @@ a {
     width: 20vh;
     bottom: 10vh;
     right: 5vh; }
-
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzY3NzL21haW4uY3NzIiwic291cmNlUm9vdCI6IiJ9*/
+body {
+  font-family: 'Microsoft YaHei'; }

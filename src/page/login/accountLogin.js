@@ -1,14 +1,22 @@
 import React from 'react'
 import { NavBar, Icon ,List, InputItem,WhiteSpace,WingBlank,Button} from 'antd-mobile'
 // import { createForm } from 'rc-form';
-import { axios } from 'axios'
+import  axios  from 'axios'
 
 import '../../scss/register.scss'
 
 class accountLogin extends React.Component{
-  // componentDidMount() {
-  //   this.autoFocusInst.focus();
-  // }
+  componentDidMount() {
+       axios.get('/user/info').then(res => {
+    if (res.status === 200) {
+      if (res.data.code === 0) {
+        
+      } else {
+        this.props.history.push('/communitylogin')
+      }
+    }
+  })
+  }
   // handleClick(){
   //   this.inputRef.focus();
   // }

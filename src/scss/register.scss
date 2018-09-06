@@ -34,10 +34,19 @@ $color:#278B81;
   }
     .am-list-item{
       background: transparent;
+      padding-right: 15px;
+      .am-list-line{
+        border-bottom: 1PX solid #ddd;
+        .am-list-content{
+          color: #EAFEFF;
+        }
+        input{
+          color: white;
+        }
+      }
     }
-    .am-list-line{
-      border-bottom: 1PX solid #ddd;
-    }  
+
+
   .loginBtn{
     background: transparent;
     position: absolute !important;

@@ -2,27 +2,39 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
+// const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin')
+
+function resolve(dir) { // 转换为绝对路径
+  return path.join(__dirname, dir);
+}
 
 module.exports = {
   entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, 'dev'),
-    // publicPath:'/dev/',
+    path: path.resolve(__dirname, './dev'),
+    // publicPath:'./',
     filename: 'js/vendor.js'
   },
-  devtool: 'inline-source-map',
+  //devtool: 'inline-source-map',
+  resolve: {
+    modules: [ // 优化模块查找路径
+      path.resolve('src'),
+      path.resolve('node_modules') // 指定node_modules所在位置 当你import 第三方模块时 直接从这个路径下搜索寻找
+    ]
+  },
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
+          loader: 'babel-loader?cacheDirectory',
           options: {
             presets: ['env', 'babel-preset-react'],
             plugins: ["transform-decorators-legacy"]
           }
-        }
+        },
+        include: path.resolve(__dirname, './src')
       },
       {
         test: /\.css$/,
@@ -72,37 +84,42 @@ module.exports = {
     //处理css部分
     new ExtractTextPlugin("scss/[name].css"),
     //提出公共部分
-    // new webpack.optimize.SplitChunksPlugin({
-    //   chunks: "all",
-    //   minSize: 20000,
-    //   minChunks: 1,
-    //   maxAsyncRequests: 5,
-    //   maxInitialRequests: 3,
-    //   name: true
-    // }),
     new webpack.optimize.SplitChunksPlugin({
-      cacheGroups: {
-          default: {
-              minChunks: 2,
-              priority: -20,
-              reuseExistingChunk: true,
-          },
-          //打包重复出现的代码
-          vendor: {
-              chunks: 'initial',
-              minChunks: 2,
-              maxInitialRequests: 5, // The default limit is too small to showcase the effect
-              minSize: 0, // This is example is too small to create commons chunks
-              name: 'vendor'
-          },
-          //打包第三方类库
-          commons: {
-              name: "commons",
-              chunks: "initial",
-              minChunks: Infinity
-          }
-      }
+      chunks: "all",
+      minSize: 20000,
+      minChunks: 1,
+      maxAsyncRequests: 5,
+      maxInitialRequests: 3,
+      name: true
     }),
+    // new webpack.optimize.UglifyJsPlugin({
+    //   compress: {
+    //     warnings: false
+    //   },
+    //   sourceMap: true
+    // })
+     // 使用 ParallelUglifyPlugin 并行压缩输出的 JS 代码
+    //  new ParallelUglifyPlugin({
+    //   // 传递给 UglifyJS 的参数
+    //   uglifyJS: {
+    //     output: {
+    //       // 最紧凑的输出
+    //       beautify: false,
+    //       // 删除所有的注释
+    //       comments: false,
+    //     },
+    //     compress: {
+    //       // 在UglifyJs删除没有用到的代码时不输出警告
+    //       warnings: false,
+    //       // 删除所有的 `console` 语句，可以兼容ie浏览器
+    //       drop_console: true,
+    //       // 内嵌定义了但是只用到一次的变量
+    //       collapse_vars: true,
+    //       // 提取出出现多次但是没有定义成变量去引用的静态值
+    //       reduce_vars: true,
+    //     }
+    //   },
+    // }),
     new webpack.optimize.RuntimeChunkPlugin({
       name: "manifest"
     })
@@ -111,10 +128,16 @@ module.exports = {
      contentBase: "./dev",
     // contentBase:"./dev",
     port: 1003,
+    inline: true,
+    hot: true,
+    historyApiFallback:true,
     proxy: {
       '/': {
         target: "http://localhost:1004",
-        changeOrigin:true,
+        changeOrigin: true,
+        pathRewrite: {
+          '^/': ''
+       }
       }
   }
   },

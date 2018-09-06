@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavBar, Icon ,Button, WhiteSpace, WingBlank ,Modal} from 'antd-mobile'
-import { axios } from 'axios'
+import  axios  from 'axios'
 import '../../scss/login.scss'
 import img from '../../assets/logo.png'
 import Register from '../register/register';
@@ -14,6 +14,17 @@ class communityLogin extends React.Component{
       modal1: false
     }
   }
+  componentDidMount() {
+    axios.get('/user/info').then(res => {
+      if (res.status === 200) {
+        if (res.data.code === 0) {
+          
+        } else {
+          this.props.history.push('/communitylogin')
+        }
+      }
+})
+}
   closest(el, selector){
     const matchesSelector = el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector;
     while (el) {
@@ -59,9 +70,9 @@ class communityLogin extends React.Component{
           leftContent="跳过"
           rightContent="社区账号登陆"></NavBar>
         <img src={img}/>
-        <WingBlank size="sm" /><Button className="loginBtn" >社区账号登陆</Button><WingBlank />
+       <Button className="loginBtn">社区账号登陆</Button>
         <WhiteSpace />  <WhiteSpace />
-        <WingBlank size="sm" /><Button className="registerBtn" onClick={()=>this.toRegister()}>创建账号</Button><WingBlank />
+        <Button className="registerBtn" onClick={()=>this.toRegister()}>创建账号</Button>
         <WhiteSpace />  <WhiteSpace />
         <u onClick={(e)=>this.showModal('modal1',e)}>同意并接受小强条款</u>
         <Modal
