@@ -1,6 +1,6 @@
 /*!
  * 
- * antd-mobile v2.2.3
+ * antd-mobile v2.2.4
  * 
  * Copyright 2015-present, Alipay, Inc.
  * All rights reserved.
@@ -1685,6 +1685,12 @@ a {
   display: inline-block;
   padding: 0 15px;
 }
+.am-button-inline.am-button-icon {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
 .am-button-small {
   font-size: 13px;
   height: 30px;
@@ -1849,6 +1855,7 @@ a {
   position: fixed;
   width: 100%;
   background-color: #fff;
+  padding-bottom: env(safe-area-inset-bottom);
 }
 .am-picker-popup-wrap {
   position: fixed;
@@ -3973,7 +3980,6 @@ a {
   left: 0;
   right: 0;
   width: 100%;
-  height: 200px;
   z-index: 10000;
   font-family: 'PingFang SC';
   background-color: #f6f6f7;
@@ -7654,7 +7660,9 @@ a {
 .am-wingblank.am-wingblank-lg {
   margin-left: 15px;
   margin-right: 15px;
-}.container {
+}body {
+  font-family: 'Microsoft YaHei'; }
+.container {
   background: -webkit-linear-gradient(#278B81, #009860);
   background: -o-linear-gradient(#278B81, #009860);
   background: -moz-linear-gradient(#278B81, #009860);
@@ -7720,13 +7728,11 @@ a {
         color: #EAFEFF; }
       .containerregister .am-list-item .am-list-line input {
         color: white; }
-  .containerregister .loginBtn {
+  .containerregister .registerBtn {
     background: transparent;
     position: absolute !important;
     border: .5px solid white !important;
     color: white;
     width: 20vh;
-    bottom: 10vh;
-    right: 5vh; }
-body {
-  font-family: 'Microsoft YaHei'; }
+    bottom: 20px;
+    right: 20px; }

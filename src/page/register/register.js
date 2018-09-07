@@ -2,9 +2,14 @@ import React from 'react'
 import { NavBar, Icon ,List, InputItem,WhiteSpace,WingBlank,Radio,Button} from 'antd-mobile'
 // import { createForm } from 'rc-form';
 import  axios  from 'axios'
-
+import { connect } from 'react-redux'
+import {register} from '../../redux/user.redux'
 import '../../scss/register.scss'
 
+@connect(
+  state => state.user,
+  {register}
+)
 class Register extends React.Component{
   constructor(props) {
     super(props)
@@ -16,21 +21,20 @@ class Register extends React.Component{
     }
   }
   componentDidMount () {
-    axios.get('/user/info').then(res => {
-      if (res.status === 200) {
-        if (res.data.code === 0) {
-          console.log(res)
-        } else {
-          this.props.history.push('/communitylogin')
-        }
-      }
-    })
   }
   handleClick () {
     this.props.history.goBack()
   }
   hanleChange(key,val){
     this.setState({[key]:val})
+  }
+  radioChange (type) {
+    this.setState({type:type})
+  }
+  
+  toRegister () {
+    this.props.register(this.state)
+    console.log(this.state)
   }
   render () {
     const RadioItem = Radio.RadioItem
@@ -56,9 +60,9 @@ class Register extends React.Component{
             placeholder="确认密码" type="password"
           >
         </InputItem>
-        <Button className="loginBtn" >登陆</Button>
-        <RadioItem checked={this.state.type === 'bachelor'}>单身汉</RadioItem>
-        <RadioItem checked={this.state.type ==='matcher'}>媒婆</RadioItem>
+        <Button className="registerBtn" onClick={() =>this.toRegister()}>下一步</Button>
+        <RadioItem checked={this.state.type === 'bachelor'} onClick={()=>this.radioChange('bachelor')}>单身汉</RadioItem>
+        <RadioItem checked={this.state.type ==='matcher'} onClick={()=>this.radioChange('matcher')}>媒婆</RadioItem>
       </div>
     )
   }

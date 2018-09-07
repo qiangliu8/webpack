@@ -44,16 +44,19 @@ $color:#278B81;
           color: white;
         }
       }
+      .am-radio.am-radio-checked .am-radio-inner:after{
+        border-color: #ddd;
+      }
     }
 
 
-  .loginBtn{
+  .registerBtn{
     background: transparent;
     position: absolute !important;
     border: .5px solid white !important;
     color: white;
     width: 20vh;
-    bottom: 10vh;
-    right: 5vh;
+    bottom: 20px;
+    right: 20px;
   }
 }
