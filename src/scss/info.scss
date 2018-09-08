@@ -1,0 +1,13 @@
+$color:#278B81;
+.container_info{
+  min-height: 100vh;
+  background: #fff;
+  .am-navbar-right{
+    background-color: #fff;
+    color:$color;
+  }
+  .am-grid.am-grid-square .am-grid-item .am-grid-item-inner-content .am-grid-icon{
+    width: 60%!important;
+    height: 80%;
+  }
+}

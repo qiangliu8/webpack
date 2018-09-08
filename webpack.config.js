@@ -16,6 +16,7 @@ module.exports = {
     filename: 'js/vendor.js'
   },
   //devtool: 'inline-source-map',
+  mode:"development",
   resolve: {
     modules: [ // 优化模块查找路径
       path.resolve('src'),
@@ -128,8 +129,8 @@ module.exports = {
      contentBase: "./dev",
     // contentBase:"./dev",
     port: 1003,
-    inline: true,
     hot: true,
+    inline: true,
     historyApiFallback:true,
     proxy: {
       '/': {

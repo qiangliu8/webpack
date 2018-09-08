@@ -23,8 +23,7 @@ app.use('/user', UserRouter)
 app.listen(1004, function () {
   console.log('Node app start at port 1004')
 })
- //二级目录刷新 解决出现cannot get情况 重定向至index.html
+//二级目录刷新 解决出现cannot get情况 重定向至index.html
 app.get('*', function (request, response) {
   response.sendFile(path.resolve(__dirname, '../dev', 'index.html'))
 })
- 

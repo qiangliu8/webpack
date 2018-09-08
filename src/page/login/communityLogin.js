@@ -59,7 +59,9 @@ class communityLogin extends React.Component{
       e.preventDefault();
     }
   }
-
+  toLogin () {
+    this.props.history.push('/accountlogin')
+  }
   toRegister () {
     this.props.history.push('/register')
   }
@@ -70,7 +72,7 @@ class communityLogin extends React.Component{
           leftContent="跳过"
           rightContent="社区账号登陆"></NavBar>
         <img src={img}/>
-       <Button className="loginBtn">社区账号登陆</Button>
+        <Button className="accountloginBtn" onClick={()=>this.toLogin()}>社区账号登陆</Button>
         <WhiteSpace />  <WhiteSpace />
         <Button className="registerBtn" onClick={()=>this.toRegister()}>创建账号</Button>
         <WhiteSpace />  <WhiteSpace />

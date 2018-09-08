@@ -6,6 +6,7 @@ import { Provider } from 'react-redux'
 import { BrowserRouter,HashRouter, Route, Link ,Redirect , Switch} from 'react-router-dom'
 import thunk  from 'redux-thunk'
 import accountLogin from './page/login/accountLogin'
+import matcherInfo from './page/info/info'
 import communityLogin from './page/login/communityLogin'
 import Register from './page/register/register'
 import AuthRoute from './page/auth/auth'
@@ -25,10 +26,14 @@ ReactDom.render(
       <BrowserRouter>
         <div>
           <AuthRoute></AuthRoute>
-          <Route path="/accountlogin" component={accountLogin}></Route>
-          <Route path="/communitylogin" exact component={communityLogin}></Route>
-          <Route path="/register" component={Register}></Route>
-          </div>
+          <Switch>
+            <Route path="/bachelorinfo" component={matcherInfo}></Route>
+            <Route path="/matcherinfo" component={matcherInfo}></Route>
+            <Route path="/accountlogin" component={accountLogin}></Route>
+            <Route path="/communitylogin" exact component={communityLogin}></Route>
+            <Route path="/register" component={Register}></Route>
+          </Switch>
+        </div>
       </BrowserRouter>
 </Provider>),
   document.getElementById('root'))

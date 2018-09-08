@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavBar, Icon ,List, InputItem,WhiteSpace,WingBlank,Radio,Button} from 'antd-mobile'
-// import { createForm } from 'rc-form';
+import { Redirect } from 'react-router-dom'
 import  axios  from 'axios'
 import { connect } from 'react-redux'
 import {register} from '../../redux/user.redux'
@@ -31,16 +31,15 @@ class Register extends React.Component{
   radioChange (type) {
     this.setState({type:type})
   }
-  
   toRegister () {
     this.props.register(this.state)
     console.log(this.state)
   }
   render () {
     const RadioItem = Radio.RadioItem
-
     return (
       <div className="containerregister">
+        {this.props.redirectTo ? <Redirect to={this.props.redirectTo}/>:null}
         <NavBar
           mode="dark"
           leftContent={<Icon type="left" size="lg" style={{ marginTop: "20px" }} onClick={()=>this.handleClick()}/>}
