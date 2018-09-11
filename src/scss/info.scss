@@ -6,6 +6,12 @@ $color:#278B81;
     background-color: #fff;
     color:$color;
   }
+  .am-list-item{
+    .am-input-extra{
+      font-size: 17px;
+    }
+  }
+  
   .am-grid.am-grid-square .am-grid-item .am-grid-item-inner-content .am-grid-icon{
     width: 60%!important;
     height: 80%;

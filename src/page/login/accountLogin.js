@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavBar, Icon ,List, InputItem,WhiteSpace,WingBlank,Button} from 'antd-mobile'
-// import { createForm } from 'rc-form';
+import { createForm } from 'rc-form';
 import axios from 'axios'
 import { connect } from 'react-redux'
 import { login } from '../../redux/user.redux'
@@ -41,12 +41,12 @@ class accountLogin extends React.Component{
         ></NavBar>
         <p className="ptitle">登录</p>
         <WingBlank /><InputItem
-             onChange={e=>this.hanleChange('user',e)}
+            onChange={e=>this.hanleChange('user',e)}
             placeholder="用户名"
         /><WingBlank />
-         <WhiteSpace />
+        <WhiteSpace />
         <WingBlank /><InputItem
-             onChange={e=>this.hanleChange('pwd',e)}
+            onChange={e=>this.hanleChange('pwd',e)}
             placeholder="密码"
           >
         </InputItem><WingBlank />
@@ -55,5 +55,6 @@ class accountLogin extends React.Component{
     )
   }
 }
-
+// const accountLogin = createForm()(accountLogins);
+// const accountLogin = Form.create()(accountLogins)
 export default accountLogin

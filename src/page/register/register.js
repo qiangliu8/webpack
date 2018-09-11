@@ -17,7 +17,7 @@ class Register extends React.Component{
       user:'',
       pwd:'',
       repeatpwd:'',
-      type:'bachelor'
+      type:'cook'
     }
   }
   componentDidMount () {
@@ -60,8 +60,8 @@ class Register extends React.Component{
           >
         </InputItem>
         <Button className="registerBtn" onClick={() =>this.toRegister()}>下一步</Button>
-        <RadioItem checked={this.state.type === 'bachelor'} onClick={()=>this.radioChange('bachelor')}>单身汉</RadioItem>
-        <RadioItem checked={this.state.type ==='matcher'} onClick={()=>this.radioChange('matcher')}>媒婆</RadioItem>
+        <RadioItem checked={this.state.type === 'cook'} onClick={()=>this.radioChange('cook')}>食神</RadioItem>
+        <RadioItem checked={this.state.type ==='epicure'} onClick={()=>this.radioChange('epicure')}>美食家</RadioItem>
       </div>
     )
   }

@@ -18,11 +18,17 @@ class AvatorSelector extends React.Component{
 
   render () {
     const data = Array.from(new Array(16)).map((_val, i) => ({
-      icon: require(`../../assets/head/${i+1}.png`),
+      icon: require(`../../assets/head/${i + 1}.png`),
+      title:i
     }))
     return (
       <div >
-        <Grid data={data} columnNum={4} itemStyle={{ width: '75px', height: '75px' }} activeStyle={{background:'red'}}/>
+        <Grid data={data} columnNum={4} itemStyle={{ width: '75px', height: '75px' }}
+          onClick={e => {
+            this.setState(e)
+            this.props.selectavator(e.title)
+          }
+          activeStyle={{ background: 'red' }} />
       </div>
     )
   }

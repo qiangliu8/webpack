@@ -12,6 +12,7 @@
     "font-awesome": "^4.7.0",
     "mongoose": "^5.2.12",
     "nodemon": "^1.18.4",
+    "rc-form": "^2.2.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-redux": "^5.0.7",
