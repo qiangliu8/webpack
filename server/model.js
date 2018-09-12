@@ -14,15 +14,18 @@ mongoose.connection.on('connected', function () {
 //   mactchnum: { type: String }
 // }))
 
-const models = {
+let models = {
   user: {
     'user': { 'type': String, 'require': true },
     'pwd': { 'type': String, 'require': true },
     'type': { 'type': String, 'require': true },
     'avator': { 'type': String, 'require': true },
-    'desc': {'type': String },
-    'title': { 'type': String },
-    'mactchnum': { 'type': String }
+    'cuisine': {'type': String },
+    'flavor': { 'type': String },
+    'knife': { 'type': String },
+    'budget': { 'type': String },
+    'like': { 'type': String },
+    'range': { 'type': String }
   },
   chat: {
     

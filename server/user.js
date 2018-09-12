@@ -26,11 +26,11 @@ Router.get('/list', function (req, res) {
   })
 })
 
-// Router.get('/lists', function (req, res) {
-//   User.remove({}, function (err, doc) {
-//     return res.json(doc)
-//   })
-// })
+Router.get('/delete', function (req, res) {
+  User.remove({}, function (err, doc) {
+    return res.json(doc)
+  })
+})
 
 Router.post('/register', function (req, res) {
   const { user, type } = req.body
@@ -69,6 +69,29 @@ Router.post('/login', function (req, res) {
   })
 })
 
+Router.post('/update', function (req, res) {
+  const userId = req.cookies.userId
+    if (!userId) {
+        return res.json.dumps({code:1})
+    }
+    const body = req.body
+    console.log(body)
+    console.log(userId)
+    User.findByIdAndUpdate( userId , body, function (err, doc) {
+        const data = Object.assign({}, {
+            user: doc.user,
+            type:doc.type   
+        }, body)
+        if (err) {
+            console.log("Error:" + err);
+        }
+        else {
+            console.log("Res:" + doc);
+        }
+        // console.log(doc)
+        return res.json({ code: 0, data })
+    })
+})
 
 function md5Pwd (pwd) {
   const mds = 'qiang_'

@@ -28,7 +28,7 @@ ReactDom.render(
           <AuthRoute></AuthRoute>
           <Switch>
             <Route path="/cookinfo" component={cookInfo}></Route>
-            <Route path="/eqicureinfo" component={cookInfo}></Route>
+            <Route path="/epicureinfo" component={cookInfo}></Route>
             <Route path="/accountlogin" component={accountLogin}></Route>
             <Route path="/communitylogin" exact component={communityLogin}></Route>
             <Route path="/register" component={Register}></Route>
