@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavBar, Grid,Icon ,List, InputItem,WhiteSpace,WingBlank,Button} from 'antd-mobile'
 import axios from 'axios'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import avatorSelector from '../component/avator'
@@ -10,6 +11,9 @@ import '../../scss/info.scss'
 )
 
 class AvatorSelector extends React.Component{
+  static PropTypes = {
+    selectavator:PropTypes.func
+  }
   constructor(props) {
     super(props)
     this.state = {

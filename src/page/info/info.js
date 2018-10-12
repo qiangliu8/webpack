@@ -78,7 +78,6 @@ class Info extends React.Component{
             </InputItem>
             <WhiteSpace size="md" />
             <InputItem labelNumber={2}
-              type="digit"
               onChange={e=>this.hanleChange('range',e)}
             placeholder="口味轻重">
               <img src={budget} />

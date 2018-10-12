@@ -30,7 +30,8 @@ export function user (state = initState, action) {
 
 
 //登录成功返回
-function authSuccess (data) {
+function authSuccess (obj) {
+    const {pwd,...data} = obj
     return {type:AUTH_SUCCESS,playload:data}
 }
 

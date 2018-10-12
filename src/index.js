@@ -6,7 +6,7 @@ import { Provider } from 'react-redux'
 import { BrowserRouter,HashRouter, Route, Link ,Redirect , Switch} from 'react-router-dom'
 import thunk  from 'redux-thunk'
 import accountLogin from './page/login/accountLogin'
-import cookInfo from './page/info/info'
+import Infos from './page/info/info'
 import communityLogin from './page/login/communityLogin'
 import Register from './page/register/register'
 import AuthRoute from './page/auth/auth'
@@ -27,8 +27,8 @@ ReactDom.render(
         <div>
           <AuthRoute></AuthRoute>
           <Switch>
-            <Route path="/cookinfo" component={cookInfo}></Route>
-            <Route path="/epicureinfo" component={cookInfo}></Route>
+            <Route path="/cookinfo" component={Infos}></Route>
+            <Route path="/epicureinfo" component={Infos}></Route>
             <Route path="/accountlogin" component={accountLogin}></Route>
             <Route path="/communitylogin" exact component={communityLogin}></Route>
             <Route path="/register" component={Register}></Route>

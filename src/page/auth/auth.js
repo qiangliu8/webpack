@@ -34,6 +34,7 @@ class AuthRoute extends React.Component{
   })
   }
   render () {
+    {this.props.redirectTo ? <Redirect to={this.props.redirectTo}/>:null}
     return <div></div>
   }
 }
