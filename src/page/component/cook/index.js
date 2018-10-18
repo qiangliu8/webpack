@@ -37,9 +37,11 @@ class Cook extends React.Component{
                   extra={<span>菜系：{v.cuisine}</span>}
                 />
                 <Card.Body>
-                  <div>{v.flavor}</div>
+                  <div>{v.flavor.split('\n').map(v => (
+                    <div key={v}>{v}</div>
+                  ))}</div>
                 </Card.Body>
-                <Card.Footer content="footer content" extra={<div>预算：{v.budget}</div>} />
+                <Card.Footer content={`会烧${v.knife}种菜`} extra={<div>预算：￥{v.budget}</div>} />
               </Card>) : null}
             <WhiteSpace />
           </React.Fragment>
