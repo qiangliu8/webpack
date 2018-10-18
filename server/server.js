@@ -16,7 +16,7 @@ app.use(cookieParser())
 app.use(bodyParser.json())
 // app.use(history())
 
- 
+
 
 
 app.use('/user', UserRouter)

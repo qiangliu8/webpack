@@ -126,7 +126,7 @@ module.exports = {
     })
   ],
   devServer: {
-     contentBase: "./dev",
+    contentBase: "./dev",
     // contentBase:"./dev",
     port: 1003,
     hot: true,
@@ -138,7 +138,7 @@ module.exports = {
         changeOrigin: true,
         pathRewrite: {
           '^/': ''
-       }
+      }
       }
   }
   },

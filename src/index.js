@@ -10,6 +10,7 @@ import Infos from './page/info/info'
 import communityLogin from './page/login/communityLogin'
 import Register from './page/register/register'
 import AuthRoute from './page/auth/auth'
+import HomePage from './page/component/homepage/index'
 import '../config/axios'
 import './scss/index.scss'
 import 'antd-mobile/dist/antd-mobile.css'
@@ -32,6 +33,7 @@ ReactDom.render(
             <Route path="/accountlogin" component={accountLogin}></Route>
             <Route path="/communitylogin" exact component={communityLogin}></Route>
             <Route path="/register" component={Register}></Route>
+          <Route component={HomePage}></Route>
           </Switch>
         </div>
       </BrowserRouter>

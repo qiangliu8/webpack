@@ -2,7 +2,7 @@ import React from 'react'
 import { NavBar, Icon ,List, InputItem,WhiteSpace,WingBlank,Radio,Button} from 'antd-mobile'
 // import { createForm } from 'rc-form';
 import  axios  from 'axios'
-import { withRouter } from 'react-router-dom'
+import { withRouter,Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { getUserInfo } from '../../redux/user.redux'
 import '../../scss/register.scss'
@@ -34,6 +34,7 @@ class AuthRoute extends React.Component{
   })
   }
   render () {
+    // console.log(this.props)
     {this.props.redirectTo ? <Redirect to={this.props.redirectTo}/>:null}
     return <div></div>
   }
