@@ -1,27 +1,24 @@
 import React from 'react'
-import { Card, WingBlank, WhiteSpace} from 'antd-mobile'
-import {connect} from 'react-redux'
-import { getUserList } from 'redux/chatuser.redux.js'
+import PropTypes from 'prop-types'
 
-@connect(
-  state => state,
-  { getUserList }
-)
 
-class Epicure extends React.Component{
+@withRouter
+  
+class UserCard extends React.Component{
+  static propTypes = {
+    data:PropTypes.array.isRequired
+  }
   constructor(props) {
     super(props);
   }
-  componentDidMount () {
-    this.props.getUserList('epicure')
-  }
   render () {
     return (
+    <div>
       <WingBlank>
         {this.props.chatuser.userlist.map(v => (
-          <React.Fragment key={v._id}>
+          <React.Fragment>
             {v.avator ?
-              (<Card>
+              (<Card key={v.id}>
                 <Card.Header
                   title={v.user}
                   thumb={require(`assets/head/${v.avator}.png`)}
@@ -36,7 +33,9 @@ class Epicure extends React.Component{
           </React.Fragment>
         ))}
       </WingBlank>
+    </div>
     )
   }
 }
-export default Epicure
+
+export default UserCard

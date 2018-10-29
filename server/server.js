@@ -7,7 +7,7 @@ const cookieParser = require('cookie-parser')
 const history = require('connect-history-api-fallback')
 //连接
 
-// User.remove({ age: 21 }, function (err, doc) {
+// User.remove({ type:'epicure'}, function (err, doc) {
 //   console.log(doc)
 // })
 
@@ -16,7 +16,9 @@ app.use(cookieParser())
 app.use(bodyParser.json())
 // app.use(history())
 
-
+// User.remove({ type:'epicure'}, function (err, doc) {
+//   console.log(doc)
+// })
 
 
 app.use('/user', UserRouter)

@@ -15,3 +15,30 @@ cnpm install babel-plugin-transform-decorators-legacy --save-dev   优化connect
 import { withRouter } from 'react-router-dom'
 
 @withRouter  withRouter针对于一个子组件 props只有父组件传过来的信息 想要获取url 就必须通过这个组件来获取路由信息
+
+npm install browser-cookies --save  是对操作cookie 方便的组件
+
+高阶组件
+//反向继承
+//属性代理
+@WrapperHello
+class Hello extends React.Component{
+  render(){
+    return(
+      <div style={{fontSize:30}}>11</div>
+    )
+  }
+}
+function WrapperHello(Comp){
+  class Wrap extends React.Component{
+    render(){
+      return(
+        <div>
+          <p>告诫组建</p>
+          <Comp style={{fontSize:20}} {...this.props}></Comp>
+        </div>
+      )
+    }
+  }
+  return Wrap
+}

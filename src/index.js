@@ -33,7 +33,7 @@ ReactDom.render(
             <Route path="/accountlogin" component={accountLogin}></Route>
             <Route path="/communitylogin" exact component={communityLogin}></Route>
             <Route path="/register" component={Register}></Route>
-          <Route component={HomePage}></Route>
+            <Route component={HomePage}></Route>
           </Switch>
         </div>
       </BrowserRouter>

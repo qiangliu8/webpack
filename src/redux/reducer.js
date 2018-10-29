@@ -1,3 +1,5 @@
 import { combineReducers } from 'redux'
 import { user } from './user.redux'
-export default combineReducers({ user })
+import { chatuser } from './chatuser.redux'
+
+export default combineReducers({ user,chatuser})

@@ -1,0 +1,37 @@
+.bg1{
+  width: 100%;
+  min-height: 100vh;
+  background: url(../assets/login/bg1.png) center no-repeat;
+  animation: gundong 20s;
+}
+.bg2{
+  width: 100%;
+  min-height: 100vh;
+  background: url(../assets/login/bg2.png) center no-repeat;
+  animation: gundong 20s;
+}
+.bg3{
+  width: 100%;
+  min-height: 100vh;
+  background: url(../assets/login/bg3.png) center no-repeat;
+  animation: gundong 20s;
+}
+.images{
+  
+}
+@keyframes gundong{
+  // 0%{
+  //   background-position-y:0px;
+  //   background: url(../assets/login/bg1.png) center no-repeat;
+  // }
+  // 33%{background-position-y:-100vh;
+  //     background: url(../assets/login/bg2.png) center no-repeat;
+  // }
+  // 66%{
+  //   background-position-y:0px;
+  //   background: url(../assets/login/bg3.png) center no-repeat;
+  // }
+  // 100%{background-position-y:-100vh;
+  //     background: url(../assets/login/bg2.png) center no-repeat;
+  // }
+}

@@ -4,36 +4,39 @@ import { Redirect } from 'react-router-dom'
 import  axios  from 'axios'
 import { connect } from 'react-redux'
 import {register} from '../../redux/user.redux'
+import {HocFrom} from 'util/util'
 import '../../scss/register.scss'
 
 @connect(
   state => state.user,
   {register}
 )
+@HocFrom
 class Register extends React.Component{
   constructor(props) {
     super(props)
-    this.state = {
-      user:'',
-      pwd:'',
-      repeatpwd:'',
-      type:'cook'
-    }
+    // this.state = {
+    //   user:'',
+    //   pwd:'',
+    //   repeatpwd:'',
+    //   type:'cook'
+    // }
   }
   componentDidMount () {
+    this.props.handleChange('type','cook')
   }
   handleClick () {
     this.props.history.goBack()
   }
-  hanleChange(key,val){
-    this.setState({[key]:val})
-  }
+  // hanleChange(key,val){
+  //   this.setState({[key]:val})
+  // }
   radioChange (type) {
     this.setState({type:type})
   }
   toRegister () {
-    this.props.register(this.state)
-    console.log(this.state)
+    this.props.register(this.props.state)
+    console.log(this.props.state)
   }
   render () {
     const RadioItem = Radio.RadioItem
@@ -46,22 +49,22 @@ class Register extends React.Component{
         ></NavBar>
         <p className="ptitle">输入用户名和密码</p>
         <InputItem
-            onChange={e=>this.hanleChange('user',e)}
+            onChange={e=>this.props.handleChange('user',e)}
             placeholder="用户名"
         />
         <InputItem
-            onChange={e=>this.hanleChange('pwd',e)}
+            onChange={e=>this.props.handleChange('pwd',e)}
             placeholder="密码" type="password"
           >
         </InputItem>
         <InputItem
-            onChange={e=>this.hanleChange('repeatpwd',e)}
+            onChange={e=>this.props.handleChange('repeatpwd',e)}
             placeholder="确认密码" type="password"
           >
         </InputItem>
         <Button className="registerBtn" onClick={() =>this.toRegister()}>下一步</Button>
-        <RadioItem checked={this.state.type === 'cook'} onClick={()=>this.radioChange('cook')}>食神</RadioItem>
-        <RadioItem checked={this.state.type ==='epicure'} onClick={()=>this.radioChange('epicure')}>美食家</RadioItem>
+        <RadioItem checked={this.props.state.type === 'cook'} onClick={()=>this.props.handleChange('type','cook')}>食神</RadioItem>
+        <RadioItem checked={this.props.state.type ==='epicure'} onClick={()=>this.props.handleChange('type','epicure')}>美食家</RadioItem>
       </div>
     )
   }

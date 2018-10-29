@@ -48,20 +48,21 @@ module.exports = {
         test: /\.(sass|scss)$/,
         use: ExtractTextPlugin.extract({
           fallback: "style-loader",
-          use: ["css-loader", 'sass-loader']
+          use: ["css-loader", 'sass-loader'],
+          publicPath: '../'
         })
       },
       {
-        test: /\.(png|svg|jpg|gif)$/i,
+        test: /\.(png|svg|jpg|gif)$/,
         use: [
           {
             loader: 'url-loader',
             options: {
               limit: 8192,
-              name: 'assets/[name].[ext]'
+              name: 'assets/[name].[ext]',
             }
           }
-        ]
+        ],
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,

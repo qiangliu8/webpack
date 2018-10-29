@@ -7660,7 +7660,67 @@ a {
 .am-wingblank.am-wingblank-lg {
   margin-left: 15px;
   margin-right: 15px;
-}.container {
+}.container_info {
+  min-height: 100vh;
+  background: #fff; }
+  .container_info .am-navbar-right {
+    background-color: #fff;
+    color: #278B81; }
+  .container_info .am-list-item .am-input-extra {
+    font-size: 17px; }
+  .container_info .am-grid.am-grid-square .am-grid-item .am-grid-item-inner-content .am-grid-icon {
+    width: 60% !important;
+    height: 80%; }
+  .container_info .am-button {
+    width: 150px;
+    margin: 40px auto; }
+.containerregister {
+  background: -webkit-linear-gradient(#278B81, #009860);
+  background: -o-linear-gradient(#278B81, #009860);
+  background: -moz-linear-gradient(#278B81, #009860);
+  background: linear-gradient(#278B81, #009860);
+  min-height: 100vh; }
+  .containerregister img {
+    margin: 26vh auto 24vh auto;
+    width: 100%; }
+  .containerregister .am-navbar {
+    background-color: transparent; }
+    .containerregister .am-navbar .am-navbar-left {
+      color: #7ABEBF; }
+    .containerregister .am-navbar .am-navbar-right {
+      color: #EAFEFF; }
+  .containerregister .ptitle {
+    text-align: left;
+    font-size: 25px;
+    text-indent: 20px;
+    color: white;
+    margin-bottom: 40px; }
+  .containerregister .pfooter {
+    position: absolute !important;
+    color: white;
+    width: 20vh;
+    bottom: 20px;
+    left: 20px; }
+  .containerregister .am-list-item {
+    background: transparent;
+    padding-right: 15px; }
+    .containerregister .am-list-item .am-list-line {
+      border-bottom: 1PX solid #ddd; }
+      .containerregister .am-list-item .am-list-line .am-list-content {
+        color: #EAFEFF; }
+      .containerregister .am-list-item .am-list-line input {
+        color: white; }
+    .containerregister .am-list-item .am-radio.am-radio-checked .am-radio-inner:after {
+      border-color: #ddd; }
+  .containerregister .loginBtn {
+    background: transparent;
+    position: absolute !important;
+    border: .5px solid white !important;
+    color: white;
+    width: 20vh;
+    bottom: 20px;
+    right: 20px; }
+.container {
   background: -webkit-linear-gradient(#278B81, #009860);
   background: -o-linear-gradient(#278B81, #009860);
   background: -moz-linear-gradient(#278B81, #009860);
@@ -7736,51 +7796,9 @@ a {
     width: 20vh;
     bottom: 20px;
     right: 20px; }
-.containerregister {
-  background: -webkit-linear-gradient(#278B81, #009860);
-  background: -o-linear-gradient(#278B81, #009860);
-  background: -moz-linear-gradient(#278B81, #009860);
-  background: linear-gradient(#278B81, #009860);
-  min-height: 100vh; }
-  .containerregister img {
-    margin: 26vh auto 24vh auto;
-    width: 100%; }
-  .containerregister .am-navbar {
-    background-color: transparent; }
-    .containerregister .am-navbar .am-navbar-left {
-      color: #7ABEBF; }
-    .containerregister .am-navbar .am-navbar-right {
-      color: #EAFEFF; }
-  .containerregister .ptitle {
-    text-align: left;
-    font-size: 25px;
-    text-indent: 20px;
-    color: white;
-    margin-bottom: 40px; }
-  .containerregister .pfooter {
-    position: absolute !important;
-    color: white;
-    width: 20vh;
-    bottom: 20px;
-    left: 20px; }
-  .containerregister .am-list-item {
-    background: transparent;
-    padding-right: 15px; }
-    .containerregister .am-list-item .am-list-line {
-      border-bottom: 1PX solid #ddd; }
-      .containerregister .am-list-item .am-list-line .am-list-content {
-        color: #EAFEFF; }
-      .containerregister .am-list-item .am-list-line input {
-        color: white; }
-    .containerregister .am-list-item .am-radio.am-radio-checked .am-radio-inner:after {
-      border-color: #ddd; }
-  .containerregister .loginBtn {
-    background: transparent;
-    position: absolute !important;
-    border: .5px solid white !important;
-    color: white;
-    width: 20vh;
-    bottom: 20px;
-    right: 20px; }
+.bg1 {
+  width: 100px;
+  height: 100px;
+  background: url(../assets/bg1.png) center no-repeat; }
 body {
   font-family: 'Microsoft YaHei'; }

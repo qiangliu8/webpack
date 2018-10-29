@@ -4,7 +4,7 @@ import  axios  from 'axios'
 import '../../scss/login.scss'
 import img from '../../assets/logo.png'
 import Register from '../register/register';
-
+import { Redirect } from 'react-router-dom'
 const prompt = Modal.prompt
 
 class communityLogin extends React.Component{
@@ -68,6 +68,7 @@ class communityLogin extends React.Component{
   render () {
     return (
       <div className="container">
+        {/* {this.props.redirectTo&&this.props.redirectTo!='/communitylogin' ? <Redirect to={this.props.redirectTo} /> : null} */}
         <NavBar
           leftContent="跳过"
           rightContent="社区账号登陆"></NavBar>

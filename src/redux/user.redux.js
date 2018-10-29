@@ -8,7 +8,7 @@ const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 const AUTH_SUCCESS = 'AUTH_SUCCESS'
 const ERROR_MSG = 'ERROR_MSG'
 const LOAD_DATA = 'LOAD_DATA'
-
+const LOGOUT = 'LOGOUT'
 const initState = {
     redirectTo:'',
     msg: '',
@@ -20,9 +20,11 @@ export function user (state = initState, action) {
         case AUTH_SUCCESS:
             return { ...state, msg: '', redirectTo:getRedirectPath(action.playload),...action.playload }
         case LOAD_DATA:
-            return {...state,...action.playload}
+            return {...state,redirectTo:getRedirectPath(action.playload),...action.playload}
         case ERROR_MSG:
             return { ...state, isAuth: false, msg: action.msg }
+        case LOGOUT:
+            return { ...initState, redirectTo:'/communitylogin' }
         default:
             return state
     }
@@ -83,22 +85,24 @@ export function getUserInfo (userinfo) {
     return { type: LOAD_DATA, playload: userinfo }
 
 }
-
-export function getUserInfos () {
-    return dispatch => {
-        axios.get('/user/info').then(res => {
-            if (res.status === 200) {
-                if (res.data.code === 0) {
-                
-                } else {
-                    this.props.loadData(res.data.data)
-                    this.props.history.push('/communitylogin')
-                }
-            }
-        })
-    }
-
+export function logoutSubmit () {
+    return {type:LOGOUT}
 }
+// export function getUserInfos () {
+//     return dispatch => {
+//         axios.get('/user/info').then(res => {
+//             if (res.status === 200) {
+//                 if (res.data.code === 0) {
+//                     dispatch(authSuccess({ user, type }))
+//                 } else {
+//                     this.props.loadData(res.data.data)
+//                     this.props.history.push('/communitylogin')
+//                 }
+//             }
+//         })
+//     }
+
+// }
 
 //保存用户完善信息
 export function updateInfo (data) {

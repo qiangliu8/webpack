@@ -3,17 +3,10 @@ import { NavBar,TabBar } from 'antd-mobile';
 import {connect} from 'react-redux'
 import NavLinkBar  from '../navlink/navlink'
 import { Switch, Route } from 'react-router-dom'
-import  Cook  from '../cook/index'
-function Epicure () {
-  return <h2>Epicure</h2>
-}
-
-function Msg () {
-  return <h2>Msg</h2>
-}
-function Center(){
-  return <h2>Center</h2>
-}
+import Cook from '../cook/index'
+import Epicure from 'page/component/epicure/index'
+import Center from 'page/component/center/index'
+import Message from 'page/component/message/index'
 @connect(
   state=>state
 )
@@ -48,7 +41,7 @@ class HomePage extends React.Component{
         text: '消息',
         icon: 'msg',
         title: '消息列表',
-        component: Msg,
+        component: Message,
       },
       {
         path: '/center',
@@ -62,12 +55,12 @@ class HomePage extends React.Component{
       <div>
         <NavBar
           mode="dard"
-          style={{position: 'fixed', width: '100%', top: 0}}
-        >{navList.find(v => v.path == pathname).title}</NavBar>
-        <div style={{marginTop:45}}>
+          style={{position: 'fixed', width: '100%', top: 0, zIndex: 99}}
+        >{navList.map(v => v.path == pathname?v.title:null )}</NavBar>
+        <div style={{marginTop:55}}>
           <Switch>
             {navList.map(v => (
-              <Route key={v.path} path={v.path} component={v.component}></Route>
+              <Route key={v.icon} path={v.path} component={v.component}></Route>
             ))}
           </Switch>
         </div>
