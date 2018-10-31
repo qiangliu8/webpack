@@ -1,4 +1,4 @@
-import { dispatch } from "../../node_modules/rxjs/internal/observable/range";
+import { dispatch } from "redux";
 import { Toast } from 'antd-mobile'
 import axios from 'axios'
 import { getRedirectPath } from '../util/util'
