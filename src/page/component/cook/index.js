@@ -2,12 +2,12 @@ import React from 'react'
 import { Card, WingBlank, WhiteSpace} from 'antd-mobile'
 import {connect} from 'react-redux'
 import { getUserList } from 'redux/chatuser.redux.js'
-
+import { withRouter } from 'react-router-dom'
 @connect(
   state => state,
   { getUserList }
 )
-
+@withRouter
 class Cook extends React.Component{
   constructor(props) {
     super(props);
@@ -15,13 +15,16 @@ class Cook extends React.Component{
   componentDidMount () {
     this.props.getUserList('cook')
   }
+  handleClick(v){
+    this.props.history.push(`/chat/${v.user}`)
+  }
   render () {
     return (
       <WingBlank>
         {this.props.chatuser.userlist.map(v => (
           <React.Fragment key={v._id}>
             {v.avator ?
-              (<Card>
+              (<Card onClick={()=>this.handleClick(v)}>
                 <Card.Header
                   title={v.user}
                   thumb={require(`assets/head/${v.avator}.png`)}

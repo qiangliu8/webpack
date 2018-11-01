@@ -1,3 +1,12 @@
-body{
-    font-family:'Microsoft YaHei'
+body {
+    font-family: 'Microsoft YaHei'
+}
+
+#chat-page .chat-me .am-list-extra {
+    flex-basis: auto;
+}
+
+#chat-page .chat-me .am-list-content {
+    padding-right: 15px;
+    text-align: center;
 }

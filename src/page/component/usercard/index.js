@@ -11,6 +11,9 @@ class UserCard extends React.Component{
   constructor(props) {
     super(props);
   }
+  handleClick(v){
+    this.props.history.push(`/chat/${v.user}`)
+  }
   render () {
     return (
     <div>
@@ -18,12 +21,15 @@ class UserCard extends React.Component{
         {this.props.chatuser.userlist.map(v => (
           <React.Fragment>
             {v.avator ?
-              (<Card key={v.id}>
+              (<Card 
+                key={v.id}
+                onClick={(v)=>this.handleClick(v)}
+                >  
                 <Card.Header
                   title={v.user}
                   thumb={require(`assets/head/${v.avator}.png`)}
                   thumbStyle={{ width: 40, height: 40 }}
-                  extra={`最喜欢吃${v.like}`}
+                  extra={`最喜欢s吃${v.like}`}
                 />
                 <Card.Body>
                 <span>口味：{v.range}</span>

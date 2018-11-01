@@ -7,11 +7,19 @@ const cookieParser = require('cookie-parser')
 const history = require('connect-history-api-fallback')
 //连接
 
+
 // User.remove({ type:'epicure'}, function (err, doc) {
 //   console.log(doc)
 // })
 
 const app = express()
+//work with express
+const server =require('http').Server(app)
+const io = require('socket.io')(server)
+
+io.on('connection',function(socket){
+  console.log('user login')
+})
 app.use(cookieParser())
 app.use(bodyParser.json())
 // app.use(history())
