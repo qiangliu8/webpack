@@ -14,12 +14,7 @@ const history = require('connect-history-api-fallback')
 
 const app = express()
 //work with express
-const server =require('http').Server(app)
-const io = require('socket.io')(server)
 
-io.on('connection',function(socket){
-  console.log('user login')
-})
 app.use(cookieParser())
 app.use(bodyParser.json())
 // app.use(history())
@@ -28,11 +23,24 @@ app.use(bodyParser.json())
 //   console.log(doc)
 // })
 
-
 app.use('/user', UserRouter)
-app.listen(1004, function () {
+
+const server = require('http').Server(app)
+const io = require('socket.io')(server)
+io.on('connection', function (socket) {
+  console.log('user login')
+  socket.on('sendmsg', function (data) {
+    console.log(data)
+    io.emit('recvmsg',data)
+  })
+})
+
+server.listen(1004, function () {
   console.log('Node app start at port 1004')
 })
+
+// require('socket.io').listen("80",{origins:'*'})
+
 //二级目录刷新 解决出现cannot get情况 重定向至index.html
 app.get('*', function (request, response) {
   response.sendFile(path.resolve(__dirname, '../dev', 'index.html'))

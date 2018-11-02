@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 
 @withRouter
-  
 class NavLinkBar extends React.Component{
   static propTypes = {
     data:PropTypes.array.isRequired

@@ -1,14 +1,58 @@
-{  "eslint.autoFixOnSave": true,
-    "files.autoSave":"off",
-    "eslint.validate": [
-       "javascript",
-       "javascriptreact",
-       "html",
-       { "language": "vue", "autoFix": true }
-     ],
-     "eslint.options": {
-        "plugins": ["html"]
-     },
-     //为了符合eslint的两个空格间隔原则
-     "editor.tabSize": 2   
+{
+  "window.zoomLevel": 0,
+  "editor.fontSize": 14,
+  "workbench.iconTheme": "eq-material-theme-icons-light",
+  "editor.wordWrap": "on", // 自动换行
+  "files.autoSave": "onFocusChange",
+  //"editor.formatOnSave": true, // 保存自动格式化码
+  "terminal.integrated.fontSize": 16,
+  "vsicons.dontShowNewVersionMessage": true,
+  "search.followSymlinks": false,
+  // 控制编辑器是否应在键入后自动设置行的格式
+  "editor.formatOnType": true,
+  "terminal.integrated.shell.windows": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+  // "emmet.includeLanguages": {
+  //     "ejs": "html"
+  // },
+  "easysass.formats": [{
+      "format": "compressed", // 压缩
+      "extension": ".css"
+  }],
+  "easysass.targetDir": "./scss/", // 自定义css输出文件路径
+  "standard.autoFixOnSave": true,
+  "workbench.statusBar.feedback.visible": false,
+  "emmet.syntaxProfiles": {
+      "javascript": "jsx"
+  },
+  "emmet.includeLanguages": {
+      "javascript": "javascriptreact"
+  },
+  "materialTheme.fixIconsRunning": false,
+  "prettier.eslintIntegration": true,
+  "prettier.semi": true,
+  "prettier.singleQuote": true,
+  "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+  "workbench.startupEditor": "welcomePage",
+  "gitlens.advanced.messages": {
+      "suppressShowKeyBindingsNotice": true
+  },
+  //"eslint.autoFixOnSave": true,
+  "eslint.autoFixOnSave": true,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    {
+      "language": "html",
+      "autoFix": true
+    },
+    {
+      "language": "vue",
+      "autoFix": true
+    }
+  ],
+      //为了符合eslint的两个空格间隔原则
+    "editor.tabSize": 2,
+    //"editor.formatOnType": true 
+    "files.autoSave": "onFocusChange",
 }
+
