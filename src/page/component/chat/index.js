@@ -1,29 +1,42 @@
 import React from 'react'
-import {List,InputItem} from 'antd-mobile'
+import { List, InputItem,NavBar, Icon  } from 'antd-mobile'
 import io from 'socket.io-client'
 
 const socket = io.connect('ws://localhost:1004')
-socket.on('recvmsg', function (data) {
-    console.log(data)
-})
+
 class Chat extends React.Component{
     constructor(props) {
         super(props)
-        this.state={text:''}
+        this.state={text:'',msg:[]}
     }
     componentDidMount(){
-
+        socket.on('recvmsg', data => {
+            this.setState({ msg: [...this.state.msg, data.text] })
+            console.log(data)
+        })
     }
     handleSubmit () {
         // socket.emit('action');表示发送了一个action命令，命令是字符串的，在另一端接收时，可以这么写： socket.on('action',function(){...});
         socket.emit('sendmsg', { text: this.state.text })
         this.setState({text:''})
-        console.log(this.state)
+        // console.log(this.state)
     }
     render(){
         return (
-            <div >
-                <h2>Chat with user :{this.props.match.params.user}</h2>
+            <div>
+                <NavBar
+                mode="light"
+                icon={<Icon type="left" />}
+                onLeftClick={() => this.props.history.push('/cook')}
+                rightContent={[
+                    <Icon key="0" type="search" style={{ marginRight: '16px' }} />,
+                    <Icon key="1" type="ellipsis" />,
+                ]}
+                >{this.props.match.params.user}</NavBar>
+                {this.state.msg.map(v => {
+                    return <p key={v}>{v}</p>
+                })}
+                {/* <h2>Chat with user :</h2> */}
                 <List className="stick-footer">
                     <InputItem
                         placeholder="请输入"
