@@ -34,7 +34,7 @@ ReactDom.render(
                     <Route path = "/accountlogin"component = { accountLogin }/> 
                     <Route path = "/communitylogin" exact component = { communityLogin }/> 
                     <Route path = "/register" component = { Register }/>
-                    <Route path = "/chat/:user" component = { Chat }/>
+                    <Route path = "/chat" component = { Chat }/>
                     <Route component = { HomePage } > </Route>
                 </Switch> 
                 </div> 

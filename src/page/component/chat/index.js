@@ -9,7 +9,7 @@ class Chat extends React.Component{
         super(props)
         this.state={text:'',msg:[]}
     }
-    componentDidMount(){
+    componentDidMount () {
         socket.on('recvmsg', data => {
             this.setState({ msg: [...this.state.msg, data.text] })
             console.log(data)
@@ -32,7 +32,7 @@ class Chat extends React.Component{
                     <Icon key="0" type="search" style={{ marginRight: '16px' }} />,
                     <Icon key="1" type="ellipsis" />,
                 ]}
-                >{this.props.match.params.user}</NavBar>
+                >{this.props.location.search?this.props.location.search.split('=')[1]:null}</NavBar>
                 {this.state.msg.map(v => {
                     return <p key={v}>{v}</p>
                 })}
