@@ -1,7 +1,6 @@
 {
-  "window.zoomLevel": 0,
-  "editor.fontSize": 14,
-  "workbench.iconTheme": "eq-material-theme-icons-light",
+"window.zoomLevel": 0,
+  "workbench.iconTheme": "vscode-icons",
   "editor.wordWrap": "on", // 自动换行
   "files.autoSave": "onFocusChange",
   //"editor.formatOnSave": true, // 保存自动格式化码
@@ -54,5 +53,6 @@
     "editor.tabSize": 2,
     //"editor.formatOnType": true 
     "files.autoSave": "onFocusChange",
+    "vsicons.presets.angular": true,
 }
 

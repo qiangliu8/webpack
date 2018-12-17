@@ -16,7 +16,7 @@ class Cook extends React.Component{
     this.props.getUserList('cook')
   }
   handleClick(v){
-    this.props.history.push(`/chat/${v.user}`)
+    this.props.history.push(`/chat/${v._id}`)
   }
   render () {
     return (
