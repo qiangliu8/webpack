@@ -46,7 +46,7 @@ class Chat extends React.Component{
                     <Icon key="0" type="search" style={{ marginRight: '16px' }} />,
                     <Icon key="1" type="ellipsis" />,
                 ]}
-                >{this.props.match.params.user}</NavBar>
+                >{this.props.location.search?this.props.location.search.split('=')[1]:null}</NavBar>
                 {this.state.msg.map(v => {
                     return <p key={v}>{v}</p>
                 })}
