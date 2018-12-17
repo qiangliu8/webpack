@@ -2,13 +2,13 @@ import React from 'react'
 import { List, InputItem,NavBar, Icon  } from 'antd-mobile'
 import { connect } from 'react-redux'
 import io from 'socket.io-client'
-import { getMsgList, sendMsg } from 'redux/chat.redux.js'
+import { getMsgList, sendMsg, recvMsg } from 'redux/chat.redux.js'
 
  const socket = io.connect('ws://localhost:1004')
 
 @connect(
     state=>state,
-    { getMsgList, sendMsg }
+    { getMsgList, sendMsg, recvMsg }
 )
 class Chat extends React.Component{
     constructor(props) {
@@ -21,6 +21,7 @@ class Chat extends React.Component{
         //     console.log(data)
         // })
         this.props.getMsgList()
+        this.props.recvMsg()
     }
     handleSubmit () {
         // socket.emit('action');表示发送了一个action命令，命令是字符串的，在另一端接收时，可以这么写： socket.on('action',function(){...});
@@ -29,13 +30,13 @@ class Chat extends React.Component{
         }
         // socket.emit('sendmsg', { text: this.state.text })
         const from = this.props.user._id
-        const to = this.props.match.params.user
-        const msg = this.props.msg
+        const to = this.props.match.params.to
+        const msg = this.state.text
         this.props.sendMsg({ from, to, msg })
-        this.setState({text:''})
+        this.setState({ text: '' })
         // console.log(this.state)
     }
-    render(){
+    render () {
         return (
             <div>
                 <NavBar
@@ -46,7 +47,7 @@ class Chat extends React.Component{
                     <Icon key="0" type="search" style={{ marginRight: '16px' }} />,
                     <Icon key="1" type="ellipsis" />,
                 ]}
-                >{this.props.location.search?this.props.location.search.split('=')[1]:null}</NavBar>
+                >{this.props.match.params?this.props.match.params.to:null}</NavBar>
                 {this.state.msg.map(v => {
                     return <p key={v}>{v}</p>
                 })}
