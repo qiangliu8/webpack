@@ -3,6 +3,7 @@ import { TabBar } from 'antd-mobile'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 
+
 @withRouter
 class NavLinkBar extends React.Component{
   static propTypes = {
@@ -22,7 +23,8 @@ class NavLinkBar extends React.Component{
           barTintColor="white"
         >{navlist.map(v => (
             <TabBar.Item
-            title={v.text}
+              title={v.text}
+              badge={v.badge}
               key={v.path}
               icon={<div style={{
                 width: '22px',

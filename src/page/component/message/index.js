@@ -14,7 +14,7 @@ class Message extends React.Component{
   render () {
     return (
       <div>
-        <div class="images">
+        <div className="images">
           <div className="bg1"></div>
           <div className="bg2"></div>
           <div className="bg3"></div>

@@ -21,7 +21,7 @@ class Cook extends React.Component{
   render () {
     return (
       <WingBlank>
-        {this.props.chatuser.userlist.map(v => (
+        {this.props.chatuser.userlist.filter(v=>v._id !=this.props.user._id).map(v => (
           <React.Fragment key={v._id}>
             {v.avator ?
               (<Card onClick={()=>this.handleClick(v)}>

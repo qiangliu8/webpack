@@ -1,0 +1,30 @@
+.chatPage{
+  padding: 50px 0px;
+  overflow-y: scroll;
+  height: 100vh;
+  .chatList{
+    padding: 0px 15px 0px 12.5px;
+    font-size: 17px;
+    overflow: hidden;
+    p{
+      max-width: 220px;
+      background-color: white;
+      padding: 10px;
+      display: inline-block;
+      border-radius: 10px;
+    }
+    .left{
+      background: wheat;
+      float: left; 
+    }
+    .right{
+      background: #6BE61A;
+      float: right; 
+    }
+  }
+  .am-navbar{
+    position: fixed;
+    top: 0px;
+    width: 100%;
+  }
+}

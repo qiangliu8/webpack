@@ -3,8 +3,8 @@ const UserRouter = require('./user')
 const path = require('path')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
-const model = require('./model')
-const Chat = model.getModel('chat')
+const UserModel = require('./model')
+const Chat = UserModel.getModel('chat')
 
 const history = require('connect-history-api-fallback')
 //连接
@@ -35,10 +35,9 @@ io.on('connection', function (socket) {
     const { from, to, msg } = data
     const chatid = [from, to].sort().join('_')
     Chat.create({
-      chatid, from, to, content: msg, function (err, doc) {
-        console.log(doc)
+      chatid, from, to, content: msg}, function (err, doc) {
         io.emit('recvmsg',Object.assign({},doc._doc))
-    }})
+    })
 
   })
 })

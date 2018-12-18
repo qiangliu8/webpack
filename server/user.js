@@ -39,6 +39,20 @@ Router.get('/getmsgList',function(req,res){
     }
   })
 })
+
+Router.get('/getmsgList',function(req,res){ 
+  const user = req.cookies.userId
+  // Chat.find({'$or':[{from:user,to:user}]},function(err,doc){
+
+  // })
+  Chat.find({},function(err,doc){
+    let users = {}
+    doc.forEach(v => {
+      users[v._id] = { name: v.user, avator: v.avator }
+    })
+  })
+})
+
 Router.get('/delete', function (req, res) {
   User.remove({}, function (err, doc) {
     return res.json(doc)

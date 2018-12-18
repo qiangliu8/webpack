@@ -7,15 +7,22 @@ import Cook from '../cook/index'
 import Epicure from 'page/component/epicure/index'
 import Center from 'page/component/center/index'
 import Message from 'page/component/message/index'
+import { getMsgList, recvMsg } from 'redux/chat.redux.js'
+
 @connect(
-  state=>state
+  state => state,
+  { getMsgList, recvMsg }
 )
 
 class HomePage extends React.Component{
   constructor(props) {
     super(props);
   }
-  
+  componentDidMount () {
+    this.props.getMsgList()
+    this.props.recvMsg()
+
+  }
   render () {
     const user = this.props.user
     const {pathname} = this.props.location
@@ -40,6 +47,7 @@ class HomePage extends React.Component{
         path: '/msg',
         text: '消息',
         icon: 'msg',
+        badge:this.props.chat.unread,
         title: '消息列表',
         component: Message,
       },
